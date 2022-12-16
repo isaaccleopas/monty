@@ -27,6 +27,7 @@ void pint(stack_t *stack)
 	else
 	{
 		fprintf(2,"L%d: can't pint, stack empty\n", line);
+		exit(EXIT_FAILURE);
 	}
 
 }
