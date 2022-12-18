@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "monty.h"
 
 data_t data = {NULL, NULL, NULL, NULL, 0};
@@ -13,13 +14,13 @@ data_t data = {NULL, NULL, NULL, NULL, 0};
 void monty(args_t *args)
 {
 	size_t len = 0;
-	int res = 0;
+	int res = 0, line_number;
 	void (*code_func)(stack_t **, unsigned int);
 
 	data.fptr = fopen(args->av, "r");
 	if (!data.fptr)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", args->av);
+		dprintf(STDERR_FILENO, "Error: can't open file %s\n", args->av);
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -35,9 +36,10 @@ void monty(args_t *args)
 			continue;
 		}
 		code_func = get_func(data.words);
+		line_number = args->line_number;
 		if (!code_func)
 		{
-			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", args->line_number, data.words[0]);
+			dprintf(2, "L%u: unknown instruction %s\n", line_number, data.words[0]);
 			free_all(1);
 			exit(EXIT_FAILURE);
 		}

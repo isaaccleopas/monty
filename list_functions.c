@@ -80,3 +80,26 @@ void free_slistint(stack_t *head)
 		free(temp);
 	}
 }
+
+
+/**
+ * slistint_len - get number of elements in a list
+ * @h: head of doubly linked list
+ *
+ * Return: number of elements
+ */
+
+size_t slistint_len(const stack_t *h)
+{
+	const stack_t *current;
+	unsigned int num;
+
+	current = h;
+	num = 0;
+	while (current)
+	{
+		num++;
+		current = current->next;
+	}
+	return (num);
+}

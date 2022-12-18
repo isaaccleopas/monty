@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <ctype.h>
+#include <unistd.h>
 
 
 
@@ -83,6 +83,7 @@ void pstr(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 void (*get_func(char **parsed))(stack_t **, unsigned int);
 extern data_t data;
@@ -96,6 +97,10 @@ void free_all(int all);
 stack_t *add_snodeint(stack_t **head, const int n);
 stack_t *add_snodeint_end(stack_t **head, const int n);
 void free_slistint(stack_t *head);
-
+size_t slistint_len(const stack_t *h);
+int delete_snodeint_at_index(stack_t **head, unsigned int index);
+stack_t *get_snodeint_at_index(stack_t *head, unsigned int index);
+size_t slistint_len(const stack_t *h);
+stack_t *insert_snodeint_at_index(stack_t **h, unsigned int index, int n);
 
 #endif /* _MONTY_H_ */

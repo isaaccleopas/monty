@@ -19,10 +19,11 @@ void (*get_func(char **parsed))(stack_t **, unsigned int)
 		{"mul", multiply},
 		{"pstr", pstr},
 		{"rotr", rotr},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
-	int codes = 10, i;
+	int codes = 11, i;
 
 	for (i = 0; i < codes; i++)
 	{
