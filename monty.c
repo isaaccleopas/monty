@@ -20,7 +20,7 @@ void monty(args_t *args)
 	data.fptr = fopen(args->av, "r");
 	if (!data.fptr)
 	{
-		dprintf(STDERR_FILENO, "Error: can't open file %s\n", args->av);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", args->av);
 		exit(EXIT_FAILURE);
 	}
 	while (1)

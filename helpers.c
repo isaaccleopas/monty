@@ -20,10 +20,13 @@ void (*get_func(char **parsed))(stack_t **, unsigned int)
 		{"pstr", pstr},
 		{"rotr", rotr},
 		{"swap", swap},
+		{"mod", mod},
+		{"stack", stack},
+		{"queue", queue},
 		{NULL, NULL}
 	};
 
-	int codes = 11, i;
+	int codes = 14, i;
 
 	for (i = 0; i < codes; i++)
 	{

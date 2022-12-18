@@ -84,6 +84,9 @@ void push(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 
 void (*get_func(char **parsed))(stack_t **, unsigned int);
 extern data_t data;
