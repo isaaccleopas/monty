@@ -9,7 +9,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	tmp = *stack;
-	UNUSED(line_number);
+	(void)line_number;
 	while (tmp != NULL && tmp->n != 0 && isprint(tmp->n))
 	{
 		printf("%c", tmp->n);

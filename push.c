@@ -9,45 +9,35 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *tmp;
-	char *push_arg = strtok(NULL, "\n \t");
-	int pVal;
-	/*if push, tests if the push_arg was valid or not */
-	if (!is_int(push_arg))
+	stack_t *new;
+	int num = 0, i;
+
+	if (data.words[1] == NULL)
 	{
-		fprintf(stdout, "L%u: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+		free_all(1);
 		exit(EXIT_FAILURE);
 	}
 
-
-	pVal = atoi(push_arg);
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	for (i = 0; data.words[1][i]; i++)
 	{
-		fprintf(stdout, "Error: malloc failed\n");
+		if (isalpha(data.words[1][i]) != 0)
+		{
+			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+			free_all(1);
+			exit(EXIT_FAILURE);
+		}
+	}
+	num = atoi(data.words[1]);
+
+	if (data.qflag == 0)
+		new = add_snodeint(stack, num);
+	else if (data.qflag == 1)
+		new = add_snodeint_end(stack, num);
+	if (!new)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_all(1);
 		exit(EXIT_FAILURE);
 	}
-	new->n = pVal;
-	new->prev = NULL;
-	new->next = NULL;
-	/** checks if stack is empty **/
-	if ((*stack) == NULL)
-		*stack = new;
-	else if (SQ)
-	{
-		/** puts new node on top if not empty **/
-		(*stack)->prev = new;
-		new->next = *stack;
-		*stack = new;
-	}
-	else
-	{
-		/**puts new node on the bottom **/
-		tmp = *stack;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-		new->prev = tmp;
-	}
-
 }

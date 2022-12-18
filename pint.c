@@ -1,32 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "monty.h"
 
 /**
  * pint - prints value at top of the stack
  * @stack : the stack
+ * @line_number: current line in file
  *
  * Return: void
  */
 
-void pint(stack_t *stack)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	stact_t *current;
-	int line;
+	stack_t *current;
 
-	if (stack)
+	current = *stack;
+	if (current)
 	{
-		line = 0;
-		current = stack;
-		while (current)
-		{
-			printf("%d\n", current->n);
-			current = current->next;
-			line++;
-		}
+		printf("%d\n", current->n);
 	}
 	else
 	{
-		fprintf(2,"L%d: can't pint, stack empty\n", line);
+		dprintf(2,"L%d: can't pint, stack empty\n", line_number);
 	}
 
 }

@@ -9,7 +9,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 	int lastVal;
 
-	UNUSED(line_number);
+	(void)line_number;
 	if ((*stack) != NULL)
 	{
 		tmp = *stack;

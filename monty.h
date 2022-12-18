@@ -41,6 +41,36 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+ * struct args_s - structure of arguments from main
+ * @av: name of the file from the command line
+ * @line_number: number of the current line in the file
+ *
+ * Description: arguments passed to main from the command line
+ * used in different functions, organized in a struct for clarity
+ */
+typedef struct args_s
+{
+	char *av;
+	unsigned int line_number;
+} args_t;
+
+/**
+ * struct data_s - extern data to access inside functions
+ * @line: line from the file
+ * @words: parsed line
+ * @stack: pointer to the stack
+ * @fptr: file pointer
+ * @qflag: flag for queue or stack
+ */
+typedef struct data_s
+{
+	char *line;
+	char **words;
+	stack_t *stack;
+	FILE *fptr;
+	int qflag;
+} data_t;
 
 /* op code functions */
 void add(stack_t **stack, unsigned int line_number);
@@ -53,6 +83,14 @@ void pstr(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
+
+void (*get_func(char **parsed))(stack_t **, unsigned int);
+extern data_t data;
+void monty(args_t *args);
+int count_word(char *s);
+char **strtow(char *str);
+void free_everything(char **args);
+void free_all(int all);
 
 /* linked list */
 stack_t *add_snodeint(stack_t **head, const int n);
